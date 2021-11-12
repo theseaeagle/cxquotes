@@ -10,7 +10,7 @@ express_app.set("view engine", "ejs");
 
 //Database
 var fs = require('fs');
-var dbFile = 'data/sqlite.db';
+var dbFile = 'quotes.db';
 var exists = fs.existsSync(dbFile);
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database(dbFile);
@@ -18,13 +18,12 @@ var db = new sqlite3.Database(dbFile);
 // if ./.data/sqlite.db does not exist, create it, otherwise print records to console
 db.serialize(function(){
   if (!exists) {
-    db.run('CREATE TABLE Dreams (id INTEGER PRIMARY KEY, dream TEXT,parameters TEXT,parameter2 TEXT,user TEXT, time DATETIME DEFAULT CURRENT_TIMESTAMP)');
-    db.run('CREATE TABLE Songs (id INTEGER PRIMARY KEY, songpath TEXT,songname TEXT, artist TEXT,time DATETIME DEFAULT CURRENT_TIMESTAMP)');
-    console.log('New table Dreams created!');
+    db.run('CREATE TABLE Track (id INTEGER PRIMARY KEY, lastNumber INTEGER)');
+    console.log('New table Track created!');
     
     // insert default dreams
     db.serialize(function() {
-      db.run('INSERT INTO Dreams (id,dream,time) VALUES ("1","No Command",strftime("%s","now"))');
+      db.run('INSERT INTO Track (id,lastNumber) VALUES (1,1);
     });
   }
   else {
@@ -42,13 +41,13 @@ db.serialize(function(){
 
 
 
-function updateDB(command,parameter,parametertwo,email){
+function updateDB(){
     db.serialize(function() {
-        var updatesql = 'UPDATE Dreams SET  dream="' + command + '", parameters="'+ parameter +'",parameter2="' + parametertwo + '",user="' + email + '", time=strftime("%s","now") WHERE user="' + email + '"';
+        var updatesql = 'UPDATE Track SET  lastNumber=' + lastnumber+1 + 'WHERE id=1';
         db.run(updatesql,function(err) { 
           if (err || this.changes==0) {
             //console.error(err.message);
-            var insertsql = 'INSERT INTO Dreams(dream,parameters,parameter2,user,time)  VALUES("' + command + '", "' + parameter + '","' + parametertwo + '","' + email + '", strftime("%s","now"))';
+            var insertsql = 'INSERT INTO Track(id,lastNumber)  VALUES(1,1)';
             db.run(insertsql);
           }
             console.log('Row(s) updated: ${this.changes}');
@@ -65,6 +64,7 @@ express_app.get('/', function(request, response) {
   db.all('SELECT * from Dreams WHERE user="'+ user + '"', function(err, rows) {
     response.send(JSON.stringify(rows));
   });
+  
 });
 
 express_app.get('/tos', function(request, response) {
