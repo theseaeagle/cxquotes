@@ -55,19 +55,19 @@ const getQuote = new Promise((success) =>	{
 			db.get("SELECT * FROM quotes WHERE Id =" + lastnumber, (err, row)=>{
 				//console.log(row);
 				//create json
-				var o = {} // empty Object
-				var key = 'data';
-				o[key] = []; // empty Array, which you can push() values into
+				//var o = {} // empty Object
+				//var key = 'data';
+				//o[key] = []; // empty Array, which you can push() values into
 
 
 				var data = {
 					quoteAuthor: row.quoteAuthor,
 					quoteText: row.quoteText
 				};
-				o[key].push(data);
+				//o[key].push(data);
 				//console.log(JSON.stringify(o));
 				//quoteFromDB = JSON.stringify(o);
-				success(o);
+				success(row);
 			});
 		});
 		//console.log(quoteFromDB);
