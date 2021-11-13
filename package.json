@@ -1,27 +1,17 @@
 {
-  "name": "CX-Quotes",
-  "version": "0.0.1",
-  "description": "IFTT Quotes Service",
-  "main": "index.js",
+  "name": "cxquotes",
+  "version": "1.0.0",
+  "description": "ifttt quotes service",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "alexa",
-    "amazon",
-    "echo",
-    "skills"
-  ],
   "author": "Mohamed Shamil",
-  "license": "Apache License",
+  "license": "ISC",
   "dependencies": {
-    "alexa-app": "^4.0.0",
-    "ejs": "^2.6.1",
-    "express": "^4.15.2",
-    "sqlite3": "^4.0.6",
-    "googleapis": "^37.1.0",
-    "request-promise": "4.2.2",
-    "unirest": "0.5.1",
-    "formidable": "1.2.1"
+    "express": "^4.17.1",
+    "request-promise": "^4.2.6",
+    "sqlite3": "^5.0.2",
+    "unirest": "^0.6.0"
   }
 }
