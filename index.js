@@ -3,13 +3,7 @@ var rp = require('request-promise');
 var unirest = require('unirest');
 var app = express();
 
-app.express({
-  expressApp: app,
-  checkCert: true,
-  // sets up a GET route when set to true. This is handy for testing in
-  // development, but not recommended for production.
-  debug: true
-});
+
 
 app.set("view engine", "ejs");
 
