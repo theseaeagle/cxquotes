@@ -84,7 +84,7 @@ app.post('/ifttt/v1/test/setup', function (req, res) {
 	var ifttchannelkey = req.headers['IFTTT-Channel-Key']; 
 	var ifttservicekey = req.headers['IFTTT-Service-Key'];
 	
-	console.log("KEYS ARE": + ifttchannelkey + " " + ifttservicekey);
+	console.log("KEYS ARE" + ifttchannelkey + " " + ifttservicekey);
 	
 	if(ifttchannelkey=="INVALID"){
 		res.status(400).json({ "status": true, "result": 'Edit successful!' });
