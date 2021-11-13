@@ -53,21 +53,11 @@ const getQuote = new Promise((success) =>	{
 			});
 			//Get Quotes
 			db.get("SELECT * FROM quotes WHERE Id =" + lastnumber, (err, row)=>{
-				//console.log(row);
-				//create json
-				//var o = {} // empty Object
-				//var key = 'data';
-				//o[key] = []; // empty Array, which you can push() values into
-
-
-				var data = {
-					quoteAuthor: row.quoteAuthor,
-					quoteText: row.quoteText
-				};
-				//o[key].push(data);
 				//console.log(JSON.stringify(o));
 				//quoteFromDB = JSON.stringify(o);
-				success(row);
+    				//res.end(JSON.stringify({ data: {quoteAuthor: row.quoteAuthor} }));
+				var data = JSON.stringify({ data: {quoteAuthor: row.quoteAuthor, quoteText: row.quoteText}});
+				success(data);
 			});
 		});
 		//console.log(quoteFromDB);
@@ -82,8 +72,9 @@ app.get('/ifttt/v1/queries/quote', function (req, res) {
 		ress = result; // Now you can use res everywhere
 		
 	});
-	
-	getQuote.then(res.json.bind(res));
+	res.setHeader('Content-Type', 'application/json');
+	getQuote.then(res.end.bind(res));
+	//getQuote.then(res.json.bind(res));
 
 	//console.log(getQuote.result);
     //res.send();
@@ -94,8 +85,9 @@ app.post('/ifttt/v1/test/setup', function (req, res) {
 		ress = result; // Now you can use res everywhere
 		
 	});
-	
-	getQuote.then(res.json.bind(res));
+	res.setHeader('Content-Type', 'application/json');
+	getQuote.then(res.end.bind(res));
+	//getQuote.then(res.json.bind(res));
 
 	//console.log(getQuote.result);
     //res.send();
