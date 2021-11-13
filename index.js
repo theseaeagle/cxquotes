@@ -89,6 +89,18 @@ app.get('/ifttt/v1/queries/quote', function (req, res) {
     //res.send();
 });
 
+app.get('/ifttt/v1/test/setup', function (req, res) {
+	getQuote.then(function(result){
+		ress = result; // Now you can use res everywhere
+		
+	});
+	
+	getQuote.then(res.json.bind(res));
+
+	//console.log(getQuote.result);
+    //res.send();
+});
+
 
 app.listen(process.env.PORT, function () {
   console.log('Example app listening on port 3001!');
