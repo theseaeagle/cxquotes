@@ -83,7 +83,7 @@ app.get('/ifttt/v1/queries/quote', function (req, res) {
 		
 	});
 	
-	getQuote.then(res.send.bind(res));
+	getQuote.then(res.send.bind(JSON.stringify(res)));
 
 	//console.log(getQuote.result);
     //res.send();
