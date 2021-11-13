@@ -81,8 +81,10 @@ app.get('/ifttt/v1/queries/quote', function (req, res) {
 });
 
 app.post('/ifttt/v1/test/setup', function (req, res) {
-	var ifttchannelkey = req.headers['IFTTT-Channel-Key']; 
-	var ifttservicekey = req.headers['IFTTT-Service-Key'];
+	var ifttchannelkey = req.get("IFTTT-Channel-Key");
+	var ifttservicekey = req.get("IFTTT-Service-Key");
+	//var ifttchannelkey = req.headers['IFTTT-Channel-Key']; 
+	//var ifttservicekey = req.headers['IFTTT-Service-Key'];
 	
 	console.log("KEYS ARE" + ifttchannelkey + " " + ifttservicekey);
 	
