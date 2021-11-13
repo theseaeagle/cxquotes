@@ -90,6 +90,6 @@ app.get('/', function (req, res) {
 });
 
 
-app.listen(3001, function () {
+app.listen(process.env.PORT, function () {
   console.log('Example app listening on port 3001!');
 });
