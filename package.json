@@ -2,9 +2,9 @@
   "name": "cxquotes",
   "version": "1.0.0",
   "description": "ifttt quotes service",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "Mohamed Shamil",
   "license": "ISC",
