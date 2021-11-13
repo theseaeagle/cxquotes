@@ -81,6 +81,15 @@ app.get('/ifttt/v1/queries/quote', function (req, res) {
 });
 
 app.post('/ifttt/v1/test/setup', function (req, res) {
+	var ifttchannelkey = req.headers['IFTTT-Channel-Key']; 
+	var ifttservicekey = req.headers['IFTTT-Service-Key'];
+	
+	if(ifttchannelkey=="INVALID" || ifttservicekey=="INVALID"){
+		res.status(400);
+		var data = JSON.stringify({ errors: [{message: Something Wrong, code: 2}]});
+		res.end(data)
+	}
+	
 	getQuote.then(function(result){
 		ress = result; // Now you can use res everywhere
 		
