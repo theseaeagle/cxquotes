@@ -77,7 +77,7 @@ const getQuote = new Promise((success) =>	{
 });
 
 
-app.get('/', function (req, res) {
+app.get('/ifttt/v1/queries/quote', function (req, res) {
 	getQuote.then(function(result){
 		ress = result; // Now you can use res everywhere
 		
