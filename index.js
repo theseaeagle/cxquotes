@@ -89,14 +89,14 @@ app.post('/ifttt/v1/test/setup', function (req, res) {
 	console.log("KEYS ARE" + ifttchannelkey + " " + ifttservicekey);
 	
 	if(ifttchannelkey=="INVALID"){
-		res.status(400).json({ "status": true, "result": 'Edit successful!' });
+		res.status(400).json({ "errors": {"message": 'Edit successful!'}});
 		//var data = JSON.stringify({ data: {quoteAuthor: row.quoteAuthor, quoteText: row.quoteText}});
 		//var data2 = JSON.stringify({ errors: {message: Something Wrong, code: 2}});
 		//res.end(data2)
 	}
 	if(ifttservicekey=="INVALID"){
 		
-	     res.status(400).json({ "status": true, "result": 'Edit successful!' });
+	     res.status(400).json({ "errors": {"message": 'Edit successful!'}});
 		//var data = JSON.stringify({ data: {quoteAuthor: row.quoteAuthor, quoteText: row.quoteText}});
 		//var data2 = JSON.stringify({ errors: {message: Something Wrong, code: 2}});
 		//res.end(data2)	
